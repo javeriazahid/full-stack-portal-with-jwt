@@ -23,6 +23,12 @@ function Navbar() {
         >
           Student List
         </Link>
+        <Link
+          to="/subjects"
+          className="text-white hover:text-blue-400 transition duration-200 font-medium"
+        >
+          Subjects & CGPA
+        </Link>
       </div>
     </nav>
   );

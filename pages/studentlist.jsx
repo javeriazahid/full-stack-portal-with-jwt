@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 
 export default function StudentList() {
   const [students, setStudents] = useState([]);

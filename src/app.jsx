@@ -1,18 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SplashScreen from './components/SplashScreen';
-import RegistrationForm from './components/RegistrationForm';
-import StudentList from './pages/StudentList';
-import EditStudent from './pages/EditStudent';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import RegistrationForm from "./pages/registration form";
+import EditStudent from "./pages/edit tudent";
+import StudentList from "./pages/studentlist";
+import SubjectManager from "./pages/subjectmanager"; 
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<SplashScreen />} />
-        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/" element={<RegistrationForm />} />
         <Route path="/students" element={<StudentList />} />
         <Route path="/edit/:id" element={<EditStudent />} />
+        <Route path="/subjects" element={<SubjectManager />} /> 
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
