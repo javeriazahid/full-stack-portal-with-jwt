@@ -1,9 +1,9 @@
-// src/pages/EditUser.jsx
+
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditUser() {
-  const { id } = useParams(); // user ID from URL
+  const { id } = useParams(); 
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -13,7 +13,7 @@ export default function EditUser() {
     role: "employee",
   });
 
-  // Load user data from localStorage
+  
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     const userToEdit = storedUsers.find((u) => u.id === parseInt(id));
@@ -26,13 +26,13 @@ export default function EditUser() {
     }
   }, [id, navigate]);
 
-  // Handle form input changes
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Save updated user
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -43,7 +43,7 @@ export default function EditUser() {
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
     alert("User updated successfully!");
-    navigate("/admin"); // back to admin dashboard
+    navigate("/admin"); 
   };
 
   return (

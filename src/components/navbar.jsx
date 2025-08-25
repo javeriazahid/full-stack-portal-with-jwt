@@ -1,15 +1,15 @@
-// src/components/Navbar.jsx
+
 import { Link } from "react-router-dom";
 
 export default function Navbar({ user, onLogout }) {
   return (
     <nav className="bg-gray-800 text-white px-6 py-3 flex justify-between items-center shadow-md">
-      {/* Left side - Brand */}
+     
       <div className="text-lg font-bold">
         <Link to="/">MyCompany</Link>
       </div>
 
-      {/* Right side - Links */}
+      
       <div className="space-x-4">
         {!user && (
           <>

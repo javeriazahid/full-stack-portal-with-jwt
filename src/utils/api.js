@@ -1,6 +1,6 @@
-const API_BASE_URL = "http://localhost:5000/api"; // change to your deployed backend later
+const API_BASE_URL = "http://localhost:5000/api"; 
 
-// Helper to add token automatically
+
 function getHeaders(token, isJSON = true) {
   const headers = {};
   if (token) headers.Authorization = `Bearer ${token}`;
@@ -8,7 +8,7 @@ function getHeaders(token, isJSON = true) {
   return headers;
 }
 
-// ✅ GET request
+
 export async function apiGet(endpoint, token) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     headers: getHeaders(token, false),
@@ -17,7 +17,7 @@ export async function apiGet(endpoint, token) {
   return res.json();
 }
 
-// ✅ POST request
+
 export async function apiPost(endpoint, body, token) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "POST",
@@ -28,7 +28,7 @@ export async function apiPost(endpoint, body, token) {
   return res.json();
 }
 
-// ✅ PUT request
+
 export async function apiPut(endpoint, body, token) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "PUT",
@@ -39,7 +39,7 @@ export async function apiPut(endpoint, body, token) {
   return res.json();
 }
 
-// ✅ DELETE request
+
 export async function apiDelete(endpoint, token) {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, {
     method: "DELETE",

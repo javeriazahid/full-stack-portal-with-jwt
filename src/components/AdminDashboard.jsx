@@ -1,17 +1,17 @@
-// src/components/AdminDashboard.jsx
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
 
-  // Load users from localStorage
+
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
     setUsers(storedUsers);
   }, []);
 
-  // Delete a user
+ 
   const handleDelete = (id) => {
     const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
@@ -41,7 +41,7 @@ export default function AdminDashboard() {
                 <td className="p-2 border">{user.email}</td>
                 <td className="p-2 border">{user.role}</td>
                 <td className="p-2 border flex gap-2">
-                  {/* ✅ Edit button navigates to edit page */}
+                  
                   <Link
                     to={`/edit-user/${user.id}`}
                     className="bg-blue-500 text-white px-3 py-1 rounded"
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
                     Edit
                   </Link>
 
-                  {/* ✅ Delete button */}
+                  
                   <button
                     onClick={() => handleDelete(user.id)}
                     className="bg-red-500 text-white px-3 py-1 rounded"

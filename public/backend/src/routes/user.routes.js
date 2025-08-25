@@ -6,14 +6,14 @@ import { Op } from "sequelize";
 
 const router = Router();
 
-// 📌 List with pagination & filters: GET /api/users?role=employee&q=john&page=1&limit=10
+
 router.get("/", authenticate, authorize("admin"), async (req, res) => {
   const page = Math.max(parseInt(req.query.page || "1", 10), 1);
   const limit = Math.max(parseInt(req.query.limit || "10", 10), 1);
   const offset = (page - 1) * limit;
 
   const where = {};
-  if (req.query.role) where.role = req.query.role; // 'admin' or 'employee'
+  if (req.query.role) where.role = req.query.role; 
   if (req.query.q) where.name = { [Op.iLike]: `%${req.query.q}%` };
 
   const { rows, count } = await User.findAndCountAll({
@@ -33,7 +33,7 @@ router.get("/", authenticate, authorize("admin"), async (req, res) => {
   });
 });
 
-// 📌 Get single user by ID (admin only)
+
 router.get("/:id", authenticate, authorize("admin"), async (req, res) => {
   const user = await User.findByPk(req.params.id, {
     attributes: ["id", "name", "email", "role", "createdAt"],
@@ -43,7 +43,7 @@ router.get("/:id", authenticate, authorize("admin"), async (req, res) => {
   return res.json(user);
 });
 
-// 📌 Create employee (admin)
+
 router.post("/", authenticate, authorize("admin"), async (req, res) => {
   const { name, email, password, role = "employee" } = req.body;
   const exists = await User.findOne({ where: { email } });
@@ -61,7 +61,7 @@ router.post("/", authenticate, authorize("admin"), async (req, res) => {
   });
 });
 
-// 📌 Update employee (admin)
+
 router.put("/:id", authenticate, authorize("admin"), async (req, res) => {
   const user = await User.findByPk(req.params.id);
   if (!user) return res.status(404).json({ message: "Not found" });
@@ -83,7 +83,7 @@ router.put("/:id", authenticate, authorize("admin"), async (req, res) => {
   });
 });
 
-// 📌 Delete employee (admin)
+
 router.delete("/:id", authenticate, authorize("admin"), async (req, res) => {
   const user = await User.findByPk(req.params.id);
   if (!user) return res.status(404).json({ message: "Not found" });

@@ -21,20 +21,20 @@ export default function Login({ setUser }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Login failed");
 
-      // ✅ Save token & user to localStorage
+     
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
-      // ✅ Set global user
+      
       setUser(data.user);
 
-      // ✅ Navigate by role
+   
       if (data.user.role === "admin") {
         navigate("/admin");
       } else if (data.user.role === "employee") {
         navigate("/employee");
       } else {
-        navigate("/"); // fallback
+        navigate("/"); 
       }
     } catch (err) {
       setError(err.message);
