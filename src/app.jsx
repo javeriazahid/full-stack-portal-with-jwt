@@ -1,4 +1,4 @@
-// src/App.jsx
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Login from "./src/pages/Login";
@@ -11,7 +11,7 @@ import EditUser from "./src/pages/EditUser";
 function App() {
   const [user, setUser] = useState(null);
 
-  // Load user from localStorage on refresh
+  
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -19,19 +19,19 @@ function App() {
     }
   }, []);
 
-  // Login handler
+
   const handleLogin = (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
   };
 
-  // Logout handler
+ 
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
   };
 
-  // Protected route wrapper
+  
   const ProtectedRoute = ({ children, role }) => {
     if (!user) {
       return <Navigate to="/login" />;
@@ -47,14 +47,14 @@ function App() {
       <Navbar user={user} onLogout={handleLogout} />
 
       <Routes>
-        {/* Default route */}
+       
         <Route path="/" element={<Navigate to="/login" />} />
 
-        {/* Auth routes */}
+      
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Employee dashboard */}
+       
         <Route
           path="/employee"
           element={
@@ -64,7 +64,7 @@ function App() {
           }
         />
 
-        {/* Admin dashboard */}
+       
         <Route
           path="/admin"
           element={
@@ -74,7 +74,7 @@ function App() {
           }
         />
 
-        {/* ✅ Edit User route (Admin only) */}
+       
         <Route
           path="/edit-user/:id"
           element={
@@ -84,7 +84,7 @@ function App() {
           }
         />
 
-        {/* Fallback for 404 */}
+      
         <Route
           path="*"
           element={<h1 className="text-center mt-10">404 Page Not Found</h1>}

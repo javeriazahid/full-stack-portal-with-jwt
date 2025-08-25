@@ -46,9 +46,9 @@ return res.json({ token, user: { id: user.id, name: user.name, email: user.email
 });
 
 
-// useful to fetch the logged-in user's info
+
 router.get("/me", async (req, res) => {
-// optional public endpoint in case you store user in localStorage; usually protected:
+
 return res.status(501).json({ message: "Not implemented. Use localStorage user from login response." });
 });
 
